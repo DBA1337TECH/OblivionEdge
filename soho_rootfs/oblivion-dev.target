@@ -1,0 +1,19 @@
+#!/bin/sh
+# oblivion-dev.target - Modular Init System for Oblivion Edge Dev Mode
+
+echo "[*] Oblivion Dev Target Boot: Starting essential services..."
+
+TARGET_DIR="/etc/oblivion-dev/targets"
+
+for script in "$TARGET_DIR"/*.sh; do
+    if [ -x "$script" ]; then
+        echo "[+] Starting: $(basename "$script")"
+        "$script" || echo "[!] Failed: $script"
+    else
+        echo "[-] Skipping: $script (not executable)"
+    fi
+done
+
+echo "[*] Oblivion Dev Boot Complete. Entering shell..."
+exec /bin/sh
+
