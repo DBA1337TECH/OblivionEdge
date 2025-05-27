@@ -1,0 +1,15 @@
+[package]
+name = "webserver"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+actix-web = { version = "4", features = ["openssl"] }
+actix-multipart = "0.7.2"
+env_logger = "0.10"
+futures-util = "0.3.31"
+serde = { version = "1.0", features = ["derive"] }
+openssl = "0.10"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+hex = "0.4"
+

@@ -1,0 +1,24 @@
+flush ruleset
+
+table inet firewall {
+    chain input {
+        type filter hook input priority 0;
+        policy drop;
+
+        iifname "wg0" ip saddr 10.7.0.0/24 accept comment "Allow WireGuard users"
+        ct state established,related accept
+        iifname "lo" accept
+    }
+
+    chain forward {
+        type filter hook forward priority 0;
+        policy drop;
+
+        ip saddr 10.7.0.0/24 accept
+    }
+
+    chain output {
+        type filter hook output priority 0;
+        policy accept;
+    }
+}
