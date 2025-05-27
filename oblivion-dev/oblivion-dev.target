@@ -1,5 +1,18 @@
 #!/bin/sh
 # oblivion-dev.target - Modular Init System for Oblivion Edge Dev Mode
+# /* SPDX-License-Identifier: Proprietary */
+# /*
+#  * Oblivion Edge Secure Kernel Module
+#  * Copyright (c) 2025, 1337_Tech, DBA: Austin, Texas
+#  *
+#  * This software is proprietary and confidential. Unauthorized copying,
+#  * distribution, or modification of this file is strictly prohibited.
+#  *
+#  * Licensed for use only under the terms of a separate commercial agreement.
+#  * For OEM licensing, contact: security@oblivionedge.io
+#  *
+#  * Redistribution or disclosure without written permission is prohibited.
+#  */
 
 echo "[*] Oblivion Dev Target Boot: Starting essential services..."
 
