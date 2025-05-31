@@ -1,0 +1,12 @@
+--- crypto/mem_sec.c
++++ crypto/mem_sec.c
+@@ -58,9 +58,6 @@
+ #  if defined(__sun) || defined(__hpux)
+ #   include <sys/mman.h>
+ #  elif defined(__linux)
+-#   include <linux/version.h>
+-#   include <linux/mman.h>
+-#   include <sys/mman.h>
+ #  elif defined(__sgi)
+ #   include <sys/types.h>
+ #   include <sys/mman.h>

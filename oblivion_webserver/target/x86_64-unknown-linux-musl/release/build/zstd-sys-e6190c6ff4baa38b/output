@@ -1,0 +1,133 @@
+cargo:rerun-if-env-changed=ZSTD_SYS_USE_PKG_CONFIG
+OUT_DIR = Some(/media/bdg/GoldenGoose/OblivionsEdge/oblivion_webserver/target/x86_64-unknown-linux-musl/release/build/zstd-sys-e6190c6ff4baa38b/out)
+OPT_LEVEL = Some(3)
+TARGET = Some(x86_64-unknown-linux-musl)
+HOST = Some(x86_64-unknown-linux-gnu)
+cargo:rerun-if-env-changed=CC_x86_64-unknown-linux-musl
+CC_x86_64-unknown-linux-musl = None
+cargo:rerun-if-env-changed=CC_x86_64_unknown_linux_musl
+CC_x86_64_unknown_linux_musl = None
+cargo:rerun-if-env-changed=TARGET_CC
+TARGET_CC = None
+cargo:rerun-if-env-changed=CC
+CC = None
+cargo:rerun-if-env-changed=CROSS_COMPILE
+CROSS_COMPILE = None
+RUSTC_LINKER = Some(musl-gcc)
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+RUSTC_WRAPPER = None
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+DEBUG = Some(false)
+CARGO_CFG_TARGET_FEATURE = Some(crt-static,fxsr,sse,sse2)
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+cargo:rerun-if-env-changed=TARGET_CFLAGS
+TARGET_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_musl
+CFLAGS_x86_64_unknown_linux_musl = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-musl
+CFLAGS_x86_64-unknown-linux-musl = None
+CARGO_ENCODED_RUSTFLAGS = Some(-Ctarget-feature=+crt-static-Ctarget-feature=+crt-static-Lopenssl-3.5.0-lssl-lcrypto-lc-ldl-lm-lpthread)
+OUT_DIR = Some(/media/bdg/GoldenGoose/OblivionsEdge/oblivion_webserver/target/x86_64-unknown-linux-musl/release/build/zstd-sys-e6190c6ff4baa38b/out)
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+TARGET = Some(x86_64-unknown-linux-musl)
+CARGO_CFG_TARGET_FEATURE = Some(crt-static,fxsr,sse,sse2)
+HOST = Some(x86_64-unknown-linux-gnu)
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+cargo:rerun-if-env-changed=TARGET_CFLAGS
+TARGET_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_musl
+CFLAGS_x86_64_unknown_linux_musl = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-musl
+CFLAGS_x86_64-unknown-linux-musl = None
+OUT_DIR = Some(/media/bdg/GoldenGoose/OblivionsEdge/oblivion_webserver/target/x86_64-unknown-linux-musl/release/build/zstd-sys-e6190c6ff4baa38b/out)
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+TARGET = Some(x86_64-unknown-linux-musl)
+CARGO_CFG_TARGET_FEATURE = Some(crt-static,fxsr,sse,sse2)
+HOST = Some(x86_64-unknown-linux-gnu)
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+cargo:rerun-if-env-changed=TARGET_CFLAGS
+TARGET_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_musl
+CFLAGS_x86_64_unknown_linux_musl = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-musl
+CFLAGS_x86_64-unknown-linux-musl = None
+OUT_DIR = Some(/media/bdg/GoldenGoose/OblivionsEdge/oblivion_webserver/target/x86_64-unknown-linux-musl/release/build/zstd-sys-e6190c6ff4baa38b/out)
+cargo:rerun-if-env-changed=CC_ENABLE_DEBUG_OUTPUT
+cargo:rerun-if-env-changed=CRATE_CC_NO_DEFAULTS
+CRATE_CC_NO_DEFAULTS = None
+TARGET = Some(x86_64-unknown-linux-musl)
+CARGO_CFG_TARGET_FEATURE = Some(crt-static,fxsr,sse,sse2)
+HOST = Some(x86_64-unknown-linux-gnu)
+cargo:rerun-if-env-changed=CFLAGS
+CFLAGS = None
+cargo:rerun-if-env-changed=TARGET_CFLAGS
+TARGET_CFLAGS = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64_unknown_linux_musl
+CFLAGS_x86_64_unknown_linux_musl = None
+cargo:rerun-if-env-changed=CFLAGS_x86_64-unknown-linux-musl
+CFLAGS_x86_64-unknown-linux-musl = None
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+exit status: 0
+cargo:rerun-if-env-changed=AR_x86_64-unknown-linux-musl
+AR_x86_64-unknown-linux-musl = None
+cargo:rerun-if-env-changed=AR_x86_64_unknown_linux_musl
+AR_x86_64_unknown_linux_musl = None
+cargo:rerun-if-env-changed=TARGET_AR
+TARGET_AR = None
+cargo:rerun-if-env-changed=AR
+AR = None
+cargo:rerun-if-env-changed=ARFLAGS
+ARFLAGS = None
+cargo:rerun-if-env-changed=TARGET_ARFLAGS
+TARGET_ARFLAGS = None
+cargo:rerun-if-env-changed=ARFLAGS_x86_64_unknown_linux_musl
+ARFLAGS_x86_64_unknown_linux_musl = None
+cargo:rerun-if-env-changed=ARFLAGS_x86_64-unknown-linux-musl
+ARFLAGS_x86_64-unknown-linux-musl = None
+cargo:rustc-link-lib=static=zstd
+cargo:rustc-link-search=native=/media/bdg/GoldenGoose/OblivionsEdge/oblivion_webserver/target/x86_64-unknown-linux-musl/release/build/zstd-sys-e6190c6ff4baa38b/out
+cargo:root=/media/bdg/GoldenGoose/OblivionsEdge/oblivion_webserver/target/x86_64-unknown-linux-musl/release/build/zstd-sys-e6190c6ff4baa38b/out
+cargo:include=/home/bdg/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zstd-sys-2.0.15+zstd.1.5.7/zstd/lib

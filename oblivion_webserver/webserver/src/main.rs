@@ -5,9 +5,10 @@ use futures_util::stream::StreamExt;
 // use std::fs;
 use std::sync::{Arc, Mutex};
 use std::collections::HashMap;
+use std::io::Write;
 
 mod models;
-// use models::auth::{verify_cert_hash};
+use models::auth::{verify_cert_hash};
 
 struct AppState {
     sessions: Mutex<HashMap<String, String>>,
@@ -81,6 +82,8 @@ async fn login(mut payload: Multipart, data: web::Data<AppState>) -> impl Respon
         Ok(d) => d,
         Err(_) => return HttpResponse::InternalServerError().body("❌ Failed to finish hash"),
     };
+    let hex_digest = hex::encode(&digest);
+    println!("🔍 Public key SHA-512 digest: {}", hex_digest);
 
     // Attempt to extract CN from an optional X509 certificate
     // Extract CN immediately as String to avoid lifetime issues
@@ -95,24 +98,30 @@ let user = match X509::from_pem(&uploaded_key) {
         Err(_) => "default".to_string(),
     }; 
 
-    let hash_file = format!("certs/users/{}/{}.cert.sha512", user, user);
-    let stored_hash = match fs::read_to_string(&hash_file) {
-        Ok(s) => s,
-        Err(_) => return HttpResponse::Unauthorized().body("❌ No hash found for user"),
-    };
-    let expected = stored_hash.split_whitespace().next().unwrap_or("");
-    let actual_hex = hex::encode(digest);
+    let temp_cert_path = "/tmp/uploaded_cert.pem";
 
-    if actual_hex == expected {
+// Write uploaded cert to a temp file
+if let Ok(mut f) = fs::File::create(temp_cert_path) {
+    if let Err(_) = f.write_all(&uploaded_key) {
+        return HttpResponse::InternalServerError().body("❌ Failed to write temp cert");
+    }
+} else {
+    return HttpResponse::InternalServerError().body("❌ Could not create temp cert");
+}
+
+let hash_file = format!("certs/users/{}/{}.cert.sha512", user, user);
+match verify_cert_hash(temp_cert_path, &hash_file) {
+    Ok(true) => {
         data.sessions.lock().unwrap().insert("session-token-123".into(), user.clone());
         HttpResponse::Ok()
             .append_header(("Set-Cookie", "session=session-token-123; Path=/"))
             .body(format!(r#"<html><body>✅ Welcome, {}! <a href='/dashboard'>Go to Dashboard</a></body></html>"#, user))
-    } else {
-        HttpResponse::Unauthorized().body("❌ Public key hash mismatch")
     }
+    Ok(false) | Err(_) => {
+        HttpResponse::Unauthorized().body("❌ Certificate verification failed")
+    }
+ }
 }
-
 #[get("/dashboard")]
 async fn dashboard(req: HttpRequest, data: web::Data<AppState>) -> impl Responder {
     let session_cookie = req.cookie("session").map(|c| c.value().to_string()).unwrap_or_default();
