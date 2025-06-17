@@ -1,1 +1,1 @@
-savedcmd_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_inspector/Module.symvers :=  scripts/mod/modpost -M        -o /media/bdg/GoldenGoose/OblivionsEdge/oblivion_inspector/Module.symvers -T /media/bdg/GoldenGoose/OblivionsEdge/oblivion_inspector/modules.order -i Module.symvers -e 
+savedcmd_/home/bd007/projects/OblivionEdge/oblivion_inspector/Module.symvers :=  scripts/mod/modpost -M        -o /home/bd007/projects/OblivionEdge/oblivion_inspector/Module.symvers -T /home/bd007/projects/OblivionEdge/oblivion_inspector/modules.order -i Module.symvers -e 

@@ -1,1 +1,1 @@
-savedcmd_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_inspector/modules.order := {   echo /media/bdg/GoldenGoose/OblivionsEdge/oblivion_inspector/oblivion_inspector.o; :; } > /media/bdg/GoldenGoose/OblivionsEdge/oblivion_inspector/modules.order
+savedcmd_/home/bd007/projects/OblivionEdge/oblivion_inspector/modules.order := {   echo /home/bd007/projects/OblivionEdge/oblivion_inspector/oblivion_inspector.o; :; } > /home/bd007/projects/OblivionEdge/oblivion_inspector/modules.order

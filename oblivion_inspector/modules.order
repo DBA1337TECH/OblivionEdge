@@ -1,1 +1,1 @@
-/media/bdg/GoldenGoose/OblivionsEdge/oblivion_inspector/oblivion_inspector.o
+/home/bd007/projects/OblivionEdge/oblivion_inspector/oblivion_inspector.o
