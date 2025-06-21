@@ -1,8 +1,8 @@
-savedcmd_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.o := gcc -Wp,-MMD,/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/.oblivion_ztna_engine.o.d -nostdinc -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -Werror -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=branch -fno-jump-tables -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mindirect-branch-cs-prefix -mfunction-return=thunk-extern -fno-jump-tables -fpatchable-function-entry=16,16 -fno-delete-null-pointer-checks -O2 -fno-allow-store-data-races -fstack-protector-strong -fomit-frame-pointer -ftrivial-auto-var-init=zero -fno-stack-clash-protection -falign-functions=16 -fstrict-flex-arrays=3 -fno-strict-overflow -fno-stack-check -fconserve-stack -Wall -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=2048 -Wno-main -Wno-dangling-pointer -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-stringop-overflow -Wno-array-bounds -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wenum-conversion -Wextra -Wunused -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-packed-not-aligned -Wno-format-overflow -Wno-format-truncation -Wno-stringop-truncation -Wno-override-init -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-maybe-uninitialized -Wno-sign-compare -Wno-unused-parameter  -DMODULE  -DKBUILD_BASENAME='"oblivion_ztna_engine"' -DKBUILD_MODNAME='"oblivion_ztna_engine"' -D__KBUILD_MODNAME=kmod_oblivion_ztna_engine -c -o /media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.o /media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.c   ; ./tools/objtool/objtool --hacks=jump_label --hacks=noinstr --hacks=skylake --ibt --orc --retpoline --rethunk --static-call --uaccess --prefix=16  --link  --module /media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.o
+savedcmd_/home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.o := gcc -Wp,-MMD,/home/bd007/projects/OblivionEdge/oblivion_ztna_engine/.oblivion_ztna_engine.o.d -nostdinc -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/compiler-version.h -include ./include/linux/kconfig.h -include ./include/linux/compiler_types.h -D__KERNEL__ -fmacro-prefix-map=./= -Werror -std=gnu11 -fshort-wchar -funsigned-char -fno-common -fno-PIE -fno-strict-aliasing -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -fcf-protection=branch -fno-jump-tables -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -mindirect-branch-cs-prefix -mfunction-return=thunk-extern -fno-jump-tables -fpatchable-function-entry=16,16 -fno-delete-null-pointer-checks -O2 -fno-allow-store-data-races -fstack-protector-strong -fomit-frame-pointer -ftrivial-auto-var-init=zero -fno-stack-clash-protection -falign-functions=16 -fstrict-flex-arrays=3 -fno-strict-overflow -fno-stack-check -fconserve-stack -Wall -Wundef -Werror=implicit-function-declaration -Werror=implicit-int -Werror=return-type -Werror=strict-prototypes -Wno-format-security -Wno-trigraphs -Wno-frame-address -Wno-address-of-packed-member -Wmissing-declarations -Wmissing-prototypes -Wframe-larger-than=2048 -Wno-main -Wno-dangling-pointer -Wvla -Wno-pointer-sign -Wcast-function-type -Wno-stringop-overflow -Wno-array-bounds -Wno-alloc-size-larger-than -Wimplicit-fallthrough=5 -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -Wenum-conversion -Wextra -Wunused -Wno-unused-but-set-variable -Wno-unused-const-variable -Wno-packed-not-aligned -Wno-format-overflow -Wno-format-truncation -Wno-stringop-truncation -Wno-override-init -Wno-missing-field-initializers -Wno-type-limits -Wno-shift-negative-value -Wno-maybe-uninitialized -Wno-sign-compare -Wno-unused-parameter  -DMODULE  -DKBUILD_BASENAME='"oblivion_ztna_engine"' -DKBUILD_MODNAME='"oblivion_ztna_engine"' -D__KBUILD_MODNAME=kmod_oblivion_ztna_engine -c -o /home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.o /home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.c   ; ./tools/objtool/objtool --hacks=jump_label --hacks=noinstr --hacks=skylake --ibt --orc --retpoline --rethunk --static-call --uaccess --prefix=16  --link  --module /home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.o
 
-source_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.o := /media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.c
+source_/home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.o := /home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.c
 
-deps_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.o := \
+deps_/home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.o := \
   include/linux/compiler-version.h \
     $(wildcard include/config/CC_VERSION_TEXT) \
   include/linux/kconfig.h \
@@ -1374,9 +1374,6 @@ deps_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_eng
   include/linux/cfi.h \
     $(wildcard include/config/CFI_CLANG) \
   arch/x86/include/asm/cfi.h \
-  include/linux/bpf_types.h \
-    $(wildcard include/config/NETFILTER_BPF_LINK) \
-    $(wildcard include/config/XDP_SOCKETS) \
   include/uapi/linux/lsm.h \
   include/net/compat.h \
   include/uapi/linux/netlink.h \
@@ -1395,6 +1392,7 @@ deps_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_eng
     $(wildcard include/config/IPV6_SIT) \
     $(wildcard include/config/IPV6_TUNNEL) \
     $(wildcard include/config/NETPOLL) \
+    $(wildcard include/config/XDP_SOCKETS) \
     $(wildcard include/config/BQL) \
     $(wildcard include/config/RFS_ACCEL) \
     $(wildcard include/config/FCOE) \
@@ -1483,10 +1481,6 @@ deps_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_eng
     $(wildcard include/config/NF_CONNTRACK_LABELS) \
   include/linux/netfilter/nf_conntrack_tcp.h \
   include/uapi/linux/netfilter/nf_conntrack_tcp.h \
-  include/linux/netfilter/nf_conntrack_dccp.h \
-  include/uapi/linux/netfilter/nf_conntrack_tuple_common.h \
-  include/linux/netfilter/nf_conntrack_sctp.h \
-  include/uapi/linux/netfilter/nf_conntrack_sctp.h \
   include/net/netns/nftables.h \
   include/net/netns/xfrm.h \
   include/uapi/linux/xfrm.h \
@@ -1537,8 +1531,8 @@ deps_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_eng
   include/uapi/linux/fib_rules.h \
   include/net/fib_notifier.h \
 
-/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.o: $(deps_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.o)
+/home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.o: $(deps_/home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.o)
 
-$(deps_/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.o):
+$(deps_/home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.o):
 
-/media/bdg/GoldenGoose/OblivionsEdge/oblivion_ztna_engine/oblivion_ztna_engine.o: $(wildcard ./tools/objtool/objtool)
+/home/bd007/projects/OblivionEdge/oblivion_ztna_engine/oblivion_ztna_engine.o: $(wildcard ./tools/objtool/objtool)

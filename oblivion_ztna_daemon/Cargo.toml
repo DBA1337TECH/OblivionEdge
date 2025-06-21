@@ -1,0 +1,15 @@
+[package]
+name = "oblivion_ztna_daemon"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+nix = "0.27"
+[target.x86_64-unknown-linux-musl]
+linker = "musl-gcc"
+
+[profile.release]
+strip = true
+opt-level = "z"
+lto = true
+codegen-units = 1

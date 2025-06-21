@@ -1,6 +1,6 @@
 # Get OpenSSL source
-wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz
-tar -xf openssl-1.1.1w.tar.gz
+#wget https://www.openssl.org/source/openssl-1.1.1w.tar.gz
+#tar -xf openssl-1.1.1w.tar.gz
 cd openssl-1.1.1w
 
 # Set environment for musl
