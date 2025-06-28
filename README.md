@@ -1,4 +1,5 @@
 # Oblivion Edge: Free the Router. Free the Code.
+<pre>
 
 ▓█████  ███▄    █  ▄████▄   ██▀███ ▓██   ██▓ ██▓███  ▄▄▄█████▓   ▓█████ ██▒   █▓▓█████  ██▀███ ▓██   ██▓▄▄▄█████▓ ██░ ██  ██▓ ███▄    █   ▄████ 
 ▓█   ▀  ██ ▀█   █ ▒██▀ ▀█  ▓██ ▒ ██▒▒██  ██▒▓██░  ██▒▓  ██▒ ▓▒   ▓█   ▀▓██░   █▒▓█   ▀ ▓██ ▒ ██▒▒██  ██▒▓  ██▒ ▓▒▓██░ ██▒▓██▒ ██ ▀█   █  ██▒ ▀█▒
@@ -20,7 +21,9 @@
   ░        ░░   ░  ░░░ ░ ░ ░  ░  ░    ░            ░   ░ ░ ░ ░ ░ ▒     ░ ░ ░ ▒     ░   ░ ░    ░                                                 
             ░        ░           ░                       ░     ░ ░         ░ ░           ░    ░  ░                                              
                                                                                                                                                 
-This is my contribution to a better future.
+</pre>
+ 
+ This is my contribution to a better future.
 
 I'm Blake De Garza, and today, I'm giving away the source code to Oblivion Edge a zero trust, crypto hardened SOHO router OS to the security community. This is more than a project. It’s a middle finger to the closed source, backdoored, bloated bullshit shipped by vendors who would rather sell you out than secure you.
 
