@@ -22,7 +22,7 @@ if [ ! -f /etc/dropbear/dropbear_rsa_host_key ]; then
 fi
 
 # Start Dropbear SSH server on port 22
-/usr/bin/dropbear -F -E -p 22 -r /etc/dropbear/dropbear_rsa_host_key &
+/usr/bin/dropbear -F -p 22 -r /etc/dropbear/dropbear_rsa_host_key &
 
 echo "[oblivion] Dropbear running (port 22)."
 
