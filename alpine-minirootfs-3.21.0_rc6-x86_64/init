@@ -7,6 +7,11 @@
 mount -t proc none /proc
 mount -t sysfs none /sys
 mount -t devtmpfs none /dev
+mkdir -p /dev/pts
+mkdir -p /dev/net
+mount -t devpts devpts /dev/pts
+mknod /dev/net/tun c 10 200
+chmod 600 /dev/net/tun
 
 # ASCII art banner
 clear
