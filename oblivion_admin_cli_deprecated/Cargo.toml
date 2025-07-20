@@ -6,7 +6,7 @@ panic = "abort"
 codegen-units = 1
 
 [package]
-name = "oblivion_admin_cli"
+name = "oblivion-admin-cli"
 version = "0.1.0"
 edition = "2021"
 
@@ -14,3 +14,4 @@ edition = "2021"
 nix = "0.26"
 clap = { version = "4.4", features = ["derive"] }
 libc = "0.2.172"
+

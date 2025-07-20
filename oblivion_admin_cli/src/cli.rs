@@ -1,46 +1,29 @@
-use clap::{Parser, Subcommand};
-use crate::netlink::send_netlink_command;
-use crate::auth::get_auth_token;
+use clap::{Subcommand, Args, Parser};
 
 #[derive(Parser)]
-#[command(author = "Oblivion", version, about = "ZTNA Admin CLI")]
-pub struct AdminCli {
+#[command(name = "oblivion", version = "0.1.0", author = "Oblivion Edge")]
+pub struct OblivionCli {
     #[command(subcommand)]
-    command: Commands,
+    pub command: OblivionCmd,
 }
 
 #[derive(Subcommand)]
-enum Commands {
-    /// Show ZTNA engine status
-    Status,
-    /// Add a ZTNA policy rule
-    Add {
-        #[arg(short, long)]
-        src: String,
-        #[arg(short, long)]
-        dst: String,
-        #[arg(short, long)]
-        proto: String,
-        #[arg(short, long)]
-        port: u16,
-    },
+pub enum OblivionCmd {
+    Route(RouteArgs),
+    Fw(FwArgs),
 }
 
-pub fn run_cli() -> std::io::Result<()> {
-    let cli = AdminCli::parse();
-    let token = get_auth_token();
-
-    match cli.command {
-        Commands::Status => {
-            println!("ZTNA Engine is active.");
-            // Could extend this to fetch kernel stats via netlink
-        }
-        Commands::Add { src, dst, proto, port } => {
-            let payload = format!("src={} dst={} proto={} port={}", src, dst, proto, port);
-            send_netlink_command(token, 0x01, &payload)?;
-        }
-    }
-
-    Ok(())
+#[derive(Args)]
+pub struct RouteArgs {
+    #[arg(long)] pub dst: String,
+    #[arg(long)] pub gw: String,
+    #[arg(long)] pub netmask: String,
+    #[arg(long)] pub iface: String,
 }
 
+#[derive(Args)]
+pub struct FwArgs {
+    #[arg(long)] pub src: String,
+    #[arg(long)] pub dport: u16,
+    #[arg(long)] pub action: String,
+}
