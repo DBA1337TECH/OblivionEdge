@@ -1,6 +1,6 @@
 obj-m += suspect_kmod.o
 
-KDIR := ../soho_kernel/linux
+KDIR := ../../soho_kernel/linux
 PWD := $(shell pwd)
 
 all:
