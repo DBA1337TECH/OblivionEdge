@@ -1,35 +1,68 @@
-name: "CodeQL Scan"
+name: CodeQL Scan
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ OblivionEdge_Dev ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ OblivionEdge_Dev ]
   schedule:
-    - cron: '0 2 * * 0'   # weekly scan
+    - cron: '0 2 * * 0'   # Weekly (Sundays 02:00 UTC)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
 
 jobs:
   analyze:
     name: Analyze (CodeQL)
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      security-events: write
+
     steps:
-    - name: Checkout repository
+      - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
-      with:
-        languages: 'rust,cpp,python,javascript' # choose languages present in your repo
-        queries: security-and-quality
+      # Optional: speed up Rust builds
+      - name: Cache Cargo registry + build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
-      with:
-        category: 'security'
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: rust, cpp, python, ruby
+          queries: security-and-quality
+          config-file: ./.github/codeql/codeql-config.yml
+
+      # If autobuild fails for your project, replace this with explicit build steps.
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        id: analyze
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: 'security'
+          # Also write SARIF files to disk so we can upload them as artifacts
+          output: codeql-results
+
+      - name: Upload SARIF artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: codeql-results
+          path: |
+            codeql-results.sarif
+            codeql-results/**/*.sarif
 

@@ -1,0 +1,10 @@
+name: OblivionEdge CodeQL config
+paths-ignore:
+  - "**/openssl-*/**"
+  - "**/third_party/**"
+  - "**/vendor/**"
+  - "**/deps/**"
+  - "**/external/**"
+  - "**/test/**"
+  - "**/*_test.*"
+
