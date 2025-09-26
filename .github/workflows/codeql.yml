@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-      uses: actions/checkout@v4
+        uses: actions/checkout@v4
 
       # Optional: speed up Rust builds
       - name: Cache Cargo registry + build
@@ -42,27 +42,23 @@ jobs:
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: rust, cpp, python, ruby
+          languages: 'rust,cpp,python,ruby'
           queries: security-and-quality
           config-file: ./.github/codeql/codeql-config.yml
 
-      # If autobuild fails for your project, replace this with explicit build steps.
       - name: Autobuild
         uses: github/codeql-action/autobuild@v3
 
       - name: Perform CodeQL Analysis
-        id: analyze
         uses: github/codeql-action/analyze@v3
         with:
           category: 'security'
-          # Also write SARIF files to disk so we can upload them as artifacts
-          output: codeql-results
+          upload: false           # keep alerts off until we upload SARIF ourselves
+          output: sarif-results   # writes SARIF files into this path
 
       - name: Upload SARIF artifacts
         uses: actions/upload-artifact@v4
         with:
           name: codeql-results
-          path: |
-            codeql-results.sarif
-            codeql-results/**/*.sarif
+          path: sarif-results/**/*.sarif
 
