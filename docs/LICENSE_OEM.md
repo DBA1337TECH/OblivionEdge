@@ -18,5 +18,6 @@ The Software is provided "as is" without warranty of any kind, express or implie
 
 ## Contact
 For OEM license terms or commercial support:
-- Email: blake.degarza@gmail.com
-- phone: 210-505-0332
+- Email: 1337_tech@fortressofsolitude.org
+
+  
