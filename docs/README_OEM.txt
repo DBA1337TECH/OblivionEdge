@@ -16,6 +16,6 @@ Integration Instructions:
 5. For Secure Boot platforms, use the accompanying .pem signature or request a signed version.
 
 Support:
-  Email us at blake.degarza@gmail.com
+  Email us at 1337_tech@fortressofsolitude.org
 
 -- 1337_Tech | Oblivion Edge Team
