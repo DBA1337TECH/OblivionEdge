@@ -18,7 +18,7 @@
 #define CLASS_NAME "suspect"
 
 static struct nf_hook_ops nfho;
-static struct file *log_file;
+static struct file *log_file = null;
 
 static unsigned int hook_func(void *priv, struct sk_buff *skb,
                               const struct nf_hook_state *state) {
@@ -36,8 +36,7 @@ static unsigned int hook_func(void *priv, struct sk_buff *skb,
     payload_len = ntohs(iph->tot_len) - (iph->ihl * 4) - (tcph->doff * 4);
 
     if (payload_len > 0 && payload[0] == 0x03 && payload[1] == 0x02) {
-        printk(KERN_INFO "[suspect_kmod] Suspicious IKEv2-like packet detected.
-");
+        printk(KERN_INFO "[suspect_kmod] Suspicious IKEv2-like packet detected.");
     }
 
     return NF_ACCEPT;
@@ -49,15 +48,13 @@ static int __init suspect_init(void) {
     nfho.pf = PF_INET;
     nfho.priority = NF_IP_PRI_FIRST;
     nf_register_net_hook(&init_net, &nfho);
-    printk(KERN_INFO "[suspect_kmod] Loaded
-");
+    printk(KERN_INFO "[suspect_kmod] Loaded");
     return 0;
 }
 
 static void __exit suspect_exit(void) {
     nf_unregister_net_hook(&init_net, &nfho);
-    printk(KERN_INFO "[suspect_kmod] Unloaded
-");
+    printk(KERN_INFO "[suspect_kmod] Unloaded");
 }
 
 module_init(suspect_init);

@@ -11,10 +11,11 @@ mod patterns;
 use std::io::{Write, BufWriter};
 use std::time::{SystemTime, UNIX_EPOCH};
 
-use std::fs::{File, create_dir_all};
-use std::time::{SystemTime, UNIX_EPOCH};
+use std::fs::create_dir_all;
 use std::path::PathBuf;
 use patterns::{PATTERN_IKEV2, PATTERN_FILEUPLOAD};
+
+
 
 fn write_pcap_file(out_path: &std::path::Path, packets: &[Vec<u8>]) {
     let mut file = BufWriter::new(std::fs::File::create(out_path).unwrap());
@@ -47,19 +48,22 @@ fn write_pcap_file(out_path: &std::path::Path, packets: &[Vec<u8>]) {
 }
 
 fn now_ts() -> String {
-    let start = SystemTime::now();
-    let since_epoch = start.duration_since(UNIX_EPOCH).unwrap();
-    let t = chrono::NaiveDateTime::from_timestamp_opt(
-        since_epoch.as_secs() as i64, 0).unwrap();
-    t.format("%Y%m%d_%H%M%S").to_string()
+    let now = chrono::Utc::now();
+    now.format("%Y%m%d_%H%M%S").to_string()
 }
 
+
+
 fn main() {
+
+    while(true){
     let packets = packet_pipe::read_suspect_packets("/dev/suspect_kmod");
 
     for pkt in packets {
-        if pkt.windows(PATTERN_IKEV2.len()).any(|w| w == PATTERN_IKEV2)
-            || pkt.windows(PATTERN_FILEUPLOAD.len()).any(|w| w == PATTERN_FILEUPLOAD) {
+         // pkt.windows(PATTERN_IKEV2.len()).any(|w| w == PATTERN_IKEV2)
+            // 
+            // 
+            // || pkt.windows(PATTERN_FILEUPLOAD.len()).any(|w| w == PATTERN_FILEUPLOAD) {
 
             let ts = now_ts();
             let outdir = PathBuf::from(format!("output/{}", ts));
@@ -69,12 +73,14 @@ fn main() {
             std::fs::write(outdir.join("payload.bin"), &pkt).unwrap();
 
 
-            let metadata = format!("{{"ts":"{}","match":"Cisco CVE pattern"}}", ts);
-            std::fs::write(outdir.join("metadata.json"), metadata).unwrap();
+            let metadata = format!("{{\"ts\":\"{}\",\"match\":\"Cisco CVE pattern\"}}", ts);
+            std::fs::write(outdir.join("metadata.json"), &metadata).unwrap(); // borrow, don't move
 
-            let bundle = [&pkt[..], metadata.as_bytes()].concat();
+            let bundle = [&pkt[..], metadata.as_bytes()].concat(); // ✅ OK to use
+
             let encrypted = crypto::encrypt_and_compress_bundle(&bundle);
             std::fs::write(outdir.join("capture.enc.zst"), &encrypted).unwrap();
-        }
+       // }
     }
+}
 }
