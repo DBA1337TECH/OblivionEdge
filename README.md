@@ -200,7 +200,7 @@ The component diagram below outlines the layered architecture of the system, fro
 
 Modules are logically grouped for clarity and maintainability. The diagram below categorizes modules by subsystem function, including networking stack integration and kernel module orchestration.
 
-![Software Modules](./docsOblivionEdge_SoftwareModules.png)
+![Software Modules](./docs/OblivionEdge_SoftwareModules.png)
 
 Key groupings:
   **Security & Policy Modules**: ZTNA, signature verifier, TPM driver, policy enforcer
@@ -214,7 +214,7 @@ Key groupings:
 
 The deployment view presents a system wide diagram of how software components are arranged across physical and virtual interfaces on the router. It also captures integration points with TPM hardware and cloud policy services.
 
-![Deployment Diagram](./OblivionEdge_Deployment.png)
+![Deployment Diagram](./docs/OblivionEdge_Deployment.png)
 
 This reflects:
   Ethernet (eth0), Wi Fi (wlan0), SFP+ (sfp0) interface alignment
