@@ -4,12 +4,11 @@
 // Built for research, experimentation, and security-conscious development.
 
 
-
-use aes_gcm::{Aes256Gcm, Key, Nonce}; // Or use openssl
-use aes_gcm::aead::{Aead, NewAead};
+use aes_gcm::{Aes256Gcm, Key, Nonce, aead::{Aead, KeyInit}};
 use rand::RngCore;
 use zstd::stream::encode_all;
 use std::fs;
+
 
 pub fn encrypt_and_compress_bundle(data: &[u8]) -> Vec<u8> {
     let compressed = encode_all(data, 3).unwrap();
@@ -20,8 +19,9 @@ pub fn encrypt_and_compress_bundle(data: &[u8]) -> Vec<u8> {
         kb.to_vec()
     });
 
-    let key = Key::from_slice(&key_bytes);
-    let cipher = Aes256Gcm::new(key);
+    
+    let key = Key::<Aes256Gcm>::from_slice(&key_bytes);
+    let cipher = Aes256Gcm::new(key); 
     let mut nonce_bytes = [0u8; 12];
     rand::thread_rng().fill_bytes(&mut nonce_bytes);
     let nonce = Nonce::from_slice(&nonce_bytes);

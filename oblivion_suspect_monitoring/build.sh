@@ -7,7 +7,6 @@
 
 set -e
 echo "[*] Building Rust logger..."
-cd src
-cargo build --release
-cd ..
+cargo clean
+cargo build --release --target x86_64-unknown-linux-musl
 echo "[+] Rust build complete: target/release/oblivion_suspect_monitoring"
