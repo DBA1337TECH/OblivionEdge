@@ -139,6 +139,52 @@ The **centralization of router infrastructure** among a few tech giants has led 
 > Note: The CVE references and citations are based on the latest publicly available data as of **May 15, 2025**.
 
 
+# Packet Capture Features and a Forensic Use Case
+ 
+## Manual Testing and Forensic Operation Guide
+### Loading the Kernel Modules
+
+To begin monitoring, manually load the two kernel modules responsible for exporting TCP and UDP packets into user space. These modules register character devices and stream full Ethernet frames, including Layer 2 through Layer 4 data:
+
+    insmod /lib/modules/read_suspect_packets.ko
+    insmod /lib/modules/read_suspect_udp_packets.ko
+
+
+Once inserted, the system exposes /dev/suspect_kmod for TCP packets and /dev/suspect_udp_kmod for UDP packets. Both modules operate passively: they copy traffic without altering or dropping it, and they only activate when explicitly loaded by an administrator. This ensures the forensic engine is opt‑in and never affects routing, firewall operations, or normal dataplane behavior.
+
+### Running the User‑Space Monitoring Engine
+
+After the kernel modules are loaded, start the monitoring program in the background:
+
+    /usr/bin/oblivion_suspect_monitoring &
+
+
+This program creates a timestamped directory under output/ and begins collecting rolling PCAP streams, flow‑specific PCAP files, and pattern‑matched event bundles. TCP and UDP monitoring run in separate threads, each consuming from its respective device file using a synchronized, blocking read.
+
+## Overview of How main.rs Works in Oblivion_suspect_monitoring
+
+**suspect does not mean an individual but to find suspect incoming packets.**
+
+The user‑space engine is responsible for everything beyond raw packet capture. It handles parsing, flow reconstruction, pattern detection, and forensic artifact generation. Its operation proceeds in several stages.
+
+Once the program opens the device files, it enters an infinite loop that reads frames from the kernel modules. Each frame begins with a four‑byte length header, followed by the full Ethernet frame captured by the kernel hook. The parser processes the frame from Layer 2 upward, extracting source and destination MAC addresses, EtherType, IPv4 headers, protocol fields, and TCP or UDP ports. This layered interpretation allows the tool to group packets by both MAC- and IP-level flow identifiers.
+
+Every packet is wrapped into a ParsedPacket structure, which contains the original frame plus decoded metadata. The parser attempts to determine the Layer 4 offsets and ports when applicable.
+
+For TCP flows, the engine performs sequence-aware reassembly. Each unique TCP flow maintains its own reassembly state, including expected sequence numbers and out‑of‑order buffers. When enough packets accumulate, or when sequencing allows it, the reassembled data is appended to the flow. TCP flows are periodically flushed to disk as separate PCAP files that can be inspected with Wireshark or used by automated forensics tools.
+
+UDP flows are simpler and tracked based on recency. When a flow accumulates a threshold number of packets or becomes inactive, the packets are written to a per‑flow PCAP file.
+
+Pattern detection operates across the full packet byte stream. The program scans each received frame for known signatures, such as IKEv2 handshake markers or indicators of file upload mechanisms. When a match is found, the system creates an event directory containing a PCAP of the matching packet, metadata describing the match, and an encrypted and compressed bundle for long‑term storage or offline analysis.
+
+Throughout operation, the program also writes a continuous rolling PCAP file containing all packets for the protocol being monitored. This ensures that even unclassified or non‑flow traffic is preserved for auditing purposes.
+
+## Forensic and Operational Use Cases
+
+This monitoring system acts as a passive forensic probe. It is designed for environments where administrators may need to capture and reconstruct traffic related to suspected misuse, intrusion attempts, VPN negotiation anomalies, unauthorized file transfers, or unknown encrypted channels. Because the system captures full Ethernet frames, it preserves MAC‑level detail that is often lost in traditional capture pipelines.
+
+The forensic engine is not enabled by default. It activates only when the kernel modules are manually inserted or explicitly configured to load for investigation scenarios. This prevents any unintended overhead or compliance complications during normal operation. When active, it provides a transparent and complete view of traffic traversing the device without modifying or interfering with the packets themselves.
+
 
 # Oblivion Edge: Software Design Description (SDD)
 
